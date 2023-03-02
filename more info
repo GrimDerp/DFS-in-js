@@ -1,0 +1,37 @@
+Depth-First Search Algorithm
+The Depth-First Search (also DFS) algorithm is an algorithm used to find a node in a tree. This means that given a tree data structure, the algorithm will return the first node in this tree that matches the specified condition (i.e. being equal to a value). Nodes are sometimes referred to as vertices (plural of vertex) - here, we’ll call them nodes. The edges have to be unweighted. This algorithm can also work with unweighted graphs if a mechanism to keep track of already visited nodes is added.
+
+Description of the Algorithm
+The basic principle of the algorithm is to start with a start node, and then look at the first child of this node. It then looks at the first child of that node (grandchild of the start node) and so on, until a node has no more children (we’ve reached a leaf node). It then goes up one level, and looks at the next child. If there are no more children, it goes up one more level, and so on, until it find more children or reaches the start node. If hasn’t found the goal node after returning from the last child of the start node, the goal node cannot be found, since by then all nodes have been traversed.
+
+Specifically, these are the steps:
+
+For each child of the current node
+If it is the target node, return. The node has been found.
+Set the current node to this node and go back to 1.
+If there are no more child nodes to visit, return to the parent.
+If the node has no parent (i.e. it is the root), return. The node has not been found.
+Example of the Algorithm
+Consider the following tree:
+Tree for the Depth-First Search algorithm
+( one node, 2 children, both with 2 children ) 
+
+The steps the algorithm performs on this tree if given node 0 as a starting point, in order, are:
+
+Visiting Node 0
+Visiting Node 1
+Visiting Node 3
+Went through all children of 3, returning to it’s parent.
+Visiting Node 4
+Went through all children of 4, returning to it’s parent.
+Went through all children of 1, returning to it’s parent.
+Visiting Node 2
+Visiting Node 5
+Went through all children of 5, returning to it’s parent.
+Visiting Node 6
+Found the node we’re looking for!
+Runtime of the Algorithm
+The runtime of regular Depth-First Search (DFS) is O(|N|) (|N| = number of Nodes in the tree), since every node is traversed at most once. The number of nodes is equal to b^d, where b is the branching factor and d is the depth, so the runtime can be rewritten as O(b^d).
+
+Space of the Algorithm
+The space complexity of Depth-First Search (DFS) is, if we exclude the tree itself, O(d), with d being the depth, which is also the size of the call stack at maximum depth. If we include the tree, the space complexity is the same as the runtime complexity, as each node needs to be saved.
